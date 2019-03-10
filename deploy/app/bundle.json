@@ -1,0 +1,61 @@
+{
+	"name": "ingestion",
+	"version": "0.1.2",
+	"description": "",
+	"maintainers": [
+		{
+			"name": "madajaju",
+			"email": "darren@pulsipher.org",
+			"url": ""
+		}
+	],
+	"invocationImages": [
+		{
+			"imageType": "docker",
+			"image": "madajaju/ingestion:0.1.2-invoc"
+		}
+	],
+	"images": null,
+	"actions": {
+		"inspect": {
+			"Modifies": false
+		}
+	},
+	"parameters": {
+		"docker.kubernetes-namespace": {
+			"type": "string",
+			"defaultValue": "",
+			"required": false,
+			"metadata": {
+				"description": "Namespace in which to deploy"
+			},
+			"destination": {
+				"path": "",
+				"env": "DOCKER_KUBERNETES_NAMESPACE"
+			}
+		},
+		"docker.orchestrator": {
+			"type": "string",
+			"defaultValue": "",
+			"allowedValues": [
+				"",
+				"swarm",
+				"kubernetes"
+			],
+			"required": false,
+			"metadata": {
+				"description": "Orchestrator on which to deploy"
+			},
+			"destination": {
+				"path": "",
+				"env": "DOCKER_STACK_ORCHESTRATOR"
+			}
+		}
+	},
+	"credentials": {
+		"docker.context": {
+			"path": "/cnab/app/context.dockercontext",
+			"env": ""
+		}
+	}
+}

@@ -1,0 +1,18 @@
+{
+    "name": "ingestion",
+    "version": "0.0.1",
+    "invocationImages": [
+        {
+        "imageType": "docker",
+        "image": "madajaju/ingestion:latest"
+        }
+    ],
+    "images": [],
+    "parameters": {
+      "environment": {
+        "type": "string",
+        "defaultValue": "prod"
+      }
+    },
+    "credentials": {}
+}

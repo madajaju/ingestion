@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "commander": "^2.17.1",
+    "mocha": "^5.2.0",
+    "child_process": "^1.0.2",
+    "node-rest-client": "^3.1.0",
+    "supertest": "^3.0.0",
+    "eslint": "5.3.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "eslint": "5.3.0"
+  },
+  "scripts": {
+    "design": "java -jar docs/plantuml.jar -tpng -nbthread auto -checkmetadata -duration docs/*.puml docs/**/*.puml",
+    "build": "npm update && node ./deploy/build build",
+    "build-doc": "npm run design && node ./deploy/build-doc",
+    "deploy": "npm run deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-dev.yaml project-dev",
+    "deploy-apps": "node ./deploy/build deploy",
+    "deploy-test": "npm run-script deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-test.yaml project-test",
+    "deploy-prod": "npm run-script deploy-apps && docker stack deploy --compose-file=./deploy/docker-compose-prod.yaml project"
+  }
+}

@@ -1,0 +1,15 @@
+@startuml
+
+rectangle "Deployment Diagram TBD"
+
+@enduml
+
+package  "ingestion" {
+  cloud cloud1
+  node node1
+  artifact artifact1
+  storage objectStore
+  database db1
+  folder folder1
+}
+

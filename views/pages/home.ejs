@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ingestion</title>
+
+  <!-- Viewport mobile tag for sensible mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!--STYLES-->
+  <link rel="stylesheet" href="/styles/importer.css">
+  <!--STYLES END-->
+
+  <script src="/dependencies/sails.io.js"></script>
+  <script>
+    function toggleMenu(id) {
+      let submenus = document.getElementsByClassName('sub-action-bar-div');
+      for (let i = 0; i < submenus.length; i++) {
+        submenus[i].style.display = "none";
+      }
+      let submenu = document.getElementById(id);
+      submenu.style.display = "block";
+    }
+  </script>
+</head>
+
+<body>
+<div class="default-page">
+  <div class="header">
+    <div class="current-page">Home</div>
+  </div>
+  <div class="side-bar">
+    <ul class="action-bar">
+      <li class="action-bar-list"><b>ingestion</b></li>
+      <li class="action-bar-list"><a href="/">Home</a></li>
+      partial("../example/_menu", {});
+    </ul>
+  </div>
+  <div class="work-area">
+    <iframe name="work-frame" width="100%" height="120%" src="/homepage" seamless></iframe>
+  </div>
+</div>
+
+</body>
+</html>

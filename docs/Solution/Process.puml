@@ -1,0 +1,16 @@
+@startuml
+
+rectangle "Process Diagram TBD"
+
+@enduml
+
+start
+  partition subsystem1 {
+    :first;
+    :seond;
+  }
+  partition subsystem2 {
+    :third;
+    :forth;
+  }
+stop

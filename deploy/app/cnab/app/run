@@ -1,0 +1,52 @@
+#!/bin/sh
+
+DOCKER=docker
+ACTION=$CNAB_ACTION
+CONTEXT=$CNAB_P_CONTEXT
+NAME=$CNAB_INSTALLATION_NAME
+
+env
+
+cd cnab/app
+
+    case $CONTEXT in
+      dev)
+        COMPOSE_FILE=docker-compose-dev.yml
+        APP_NAME=$NAME-dev
+        ;;
+      test)
+        COMPOSE_FILE=docker-compose-test.yml
+        APP_NAME=$NAME-test
+        ;;
+      prod)
+        COMPOSE_FILE=docker-compose-prod.yml
+        APP_NAME=$NAME-prod
+        ;;
+      *)
+        COMPOSE_FILE=docker-compose.yml
+        APP_NAME=$NAME
+        ;;
+    esac
+
+    case $ACTION in
+        install)
+            echo "Deploying Stack"
+            $DOCKER stack deploy --compose-file $COMPOSE_FILE $APP_NAME
+            ;;
+        uninstall)
+            echo "Removing Stack"
+            $DOCKER stack rm $APP_NAME
+            ;;
+        upgrade)
+            echo "Upgrading stack"
+            $DOCKER stack deploy --compose-file $COMPOSE_FILE $APP_NAME
+            ;;
+        status)
+            $DOCKER stack ps $APP_NAME
+            ;;
+        *)
+        echo "No action for $action"
+        ;;
+    esac
+
+echo "Action $ACTION complete for $NAME"

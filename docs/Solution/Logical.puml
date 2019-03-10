@@ -1,0 +1,21 @@
+@startuml
+
+rectangle "Logical Diagram TBD"
+
+@enduml
+skinparam packageStyle rect
+
+package ingestion {
+package "SubSystem1" #aaffff {
+}
+package "SubSystem2" #aaffaa {
+}
+package "SubSystem3" #ffaaaa {
+}
+}
+
+SubSystem1 --> SubSystem2
+SubSystem2 --> SubSystem3
+
+
+

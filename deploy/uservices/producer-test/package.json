@@ -1,0 +1,11 @@
+{
+  "main": "index.js",
+  "scripts": {
+    "start": "docker run ${CAADE_NAMESPACE}/ingestion-producer-test",
+    "build": "docker build . -t ${CAADE_NAMESPACE}/ingestion-producer-test",
+    "publish": "docker push ${CAADE_NAMESPACE}/ingestion-producer-test",
+    "deploy": "docker run ${CAADE_NAMESPACE}/ingestion-producer-test"
+  },
+  "dependencies": {
+  }
+}

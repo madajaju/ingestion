@@ -1,0 +1,14 @@
+name: madajaju/ingestion
+version: 0.1.3
+description: Ingestion application
+keywords: []
+maintainers: []
+components:
+  cnab:
+    name: cnab
+    builder: docker
+parameters:
+  context:
+    type: string
+    defaultValue: local
+credentials: []
