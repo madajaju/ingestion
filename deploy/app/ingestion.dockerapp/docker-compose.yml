@@ -6,10 +6,12 @@ services:
     - "2181:2181"
   kafka:
     image: wurstmeister/kafka:latest
+    deploy:
+      mode: global
     ports:
       - 9094:9094
     environment:
-      HOSTNAME_COMMAND: "docker info | grep ^Name: | cut -d' ' -f 2"
+      HOSTNAME_COMMAND: host1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
       KAFKA_ADVERTISED_LISTENERS: INSIDE://:9092,OUTSIDE://_{HOSTNAME_COMMAND}:9094
@@ -18,3 +20,4 @@ services:
       KAFKA_CREATE_TOPICS: "test:1:1,test2:1:1,test3:1:1"
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
+
